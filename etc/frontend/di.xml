@@ -1,7 +1,9 @@
 <?xml version="1.0"?>
 
-<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
-    <type name="Magento\Contact\Controller\Index\Post">
-        <plugin name="ContactUs" type="Nezhura\ContactUs\Plugin\ContactUsPlugin" />
-    </type>
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="urn:magento:framework:ObjectManager/etc/config.xsd">
+    <preference
+            for="\Magento\Contact\Controller\Index\Post"
+            type="\Nezhura\ContactUs\Controller\frontend\Index\Post"
+    />
 </config>

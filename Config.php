@@ -11,4 +11,5 @@ class Config
      * @var string
      */
     const TABLE_NAME = 'contact_us';
+
 }
