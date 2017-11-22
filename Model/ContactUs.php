@@ -1,15 +1,18 @@
 <?php
 namespace Nezhura\ContactUs\Model;
 
+use Magento\Framework\Model\AbstractModel;
+use Magento\Framework\DataObject\IdentityInterface;
+
 /**
  * Class ContactUs
  * @package Nezhura\ContactUs\Model
  */
-class ContactUs extends \Magento\Framework\Model\AbstractModel
+class ContactUs extends AbstractModel implements IdentityInterface
 {
-    protected $_cacheTag = 'nezhura_contact_us';
+    const CACHE_TAG = 'nezhura_contact_us_form_data';
+    const STATUS_NEW = 1;
 
-//    protected $_eventPrefix = 'nezhura_contact_us';
 
     /**
      * @inheritdoc
@@ -19,15 +22,11 @@ class ContactUs extends \Magento\Framework\Model\AbstractModel
         $this->_init('Nezhura\ContactUs\Model\ResourceModel\ContactUs');
     }
 
-    /*public function getIdentities()
+    /**
+     * @inheritdoc
+     */
+    public function getIdentities()
     {
         return [self::CACHE_TAG . '_' . $this->getId()];
-    }*/
-
-    /*public function getDefaultValues()
-    {
-        $values = [];
-
-        return $values;
-    }*/
+    }
 }

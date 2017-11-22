@@ -16,7 +16,7 @@ class InstallSchema implements InstallSchemaInterface
         $table = $setup->getConnection()
             ->newTable($setup->getTable(Config::TABLE_NAME))
             ->addColumn(
-                'contact_us_id',
+                Config::ID_FIELD_NAME,
                 Table::TYPE_INTEGER,
                 null,
                 ['identity' => true, 'unsigned' => true, 'nullable' => false, 'primary' => true],
@@ -37,7 +37,7 @@ class InstallSchema implements InstallSchemaInterface
                 'Email'
             )
             ->addColumn(
-                'phone',
+                'telephone',
                 Table::TYPE_TEXT,
                 25,
                 [],
