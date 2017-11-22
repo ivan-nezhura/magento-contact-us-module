@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../Magento/Backend/etc/menu.xsd">
+    <menu>
+        <add
+            id="Nezhura_ContactUs::contact_us_form_data"
+            title="'Contact Us' form"
+            module="Nezhura_ContactUs"
+            sortOrder="40"
+            action="contact_us/index"
+            resource="Nezhura_ContactUs::index"
+            parent="Magento_Backend::marketing_communications"
+        />
+    </menu>
+</config>
