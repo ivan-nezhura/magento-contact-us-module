@@ -3,9 +3,9 @@ namespace Nezhura\ContactUs\Model\ResourceModel;
 
 use Magento\Framework\Model\ResourceModel\Db\AbstractDb;
 use Nezhura\ContactUs\Config;
-use Nezhura\ContactUs\Model\ContactUs as BaseModel;
+use Nezhura\ContactUs\Model\Message as BaseModel;
 
-class ContactUs extends AbstractDb
+class Message extends AbstractDb
 {
     /**
      * Date model

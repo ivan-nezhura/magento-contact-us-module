@@ -11,14 +11,14 @@ use Magento\Framework\DataObject;
 class ContactUsPlugin extends Post
 {
     /**
-     * @var \Nezhura\ContactUs\Model\ContactUsFactory
+     * @var \Nezhura\ContactUs\Model\MessageFactory
      */
     protected $_contactUsFactory;
 
     /**
-     * @var \Nezhura\ContactUs\Model\ResourceModel\ContactUsFactory
+     * @var \Nezhura\ContactUs\Model\ResourceModel\MessageFactory
      */
-    protected $_contactUsResourceFactory;
+    protected $_messageResourceFactory;
 
     /**
      * ContactUsPlugin constructor.
@@ -27,8 +27,8 @@ class ContactUsPlugin extends Post
      * @param \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation
      * @param \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig
      * @param \Magento\Store\Model\StoreManagerInterface $storeManager
-     * @param \Nezhura\ContactUs\Model\ContactUsFactory $contactUsFactory
-     * @param \Nezhura\ContactUs\Model\ResourceModel\ContactUsFactory $contactUsResourceFactory
+     * @param \Nezhura\ContactUs\Model\MessageFactory $contactUsFactory
+     * @param \Nezhura\ContactUs\Model\ResourceModel\MessageFactory $messageResourceFactory
      */
     public function __construct(
         \Magento\Framework\App\Action\Context $context,
@@ -36,11 +36,11 @@ class ContactUsPlugin extends Post
         \Magento\Framework\Translate\Inline\StateInterface $inlineTranslation,
         \Magento\Framework\App\Config\ScopeConfigInterface $scopeConfig,
         \Magento\Store\Model\StoreManagerInterface $storeManager,
-        \Nezhura\ContactUs\Model\ContactUsFactory $contactUsFactory,
-        \Nezhura\ContactUs\Model\ResourceModel\ContactUsFactory $contactUsResourceFactory
+        \Nezhura\ContactUs\Model\MessageFactory $contactUsFactory,
+        \Nezhura\ContactUs\Model\ResourceModel\MessageFactory $messageResourceFactory
     ) {
         $this->_contactUsFactory = $contactUsFactory;
-        $this->_contactUsResourceFactory = $contactUsResourceFactory;
+        $this->_messageResourceFactory = $messageResourceFactory;
 
         parent::__construct(
             $context,
@@ -107,7 +107,7 @@ class ContactUsPlugin extends Post
             $this->inlineTranslation->resume();
 
             // plugin point start
-            $resourceModel = $this->_contactUsResourceFactory->create();
+            $resourceModel = $this->_messageResourceFactory->create();
             $model = $this->_contactUsFactory->create();
             $model->setData($post);
             $resourceModel->save($model);

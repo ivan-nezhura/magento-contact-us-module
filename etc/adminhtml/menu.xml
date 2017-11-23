@@ -8,8 +8,8 @@
             title="'Contact Us' form"
             module="Nezhura_ContactUs"
             sortOrder="40"
-            action="contact_us/index"
-            resource="Nezhura_ContactUs::index"
+            action="contact_us/message/index"
+            resource="Magento_Backend::content"
             parent="Magento_Backend::marketing_communications"
         />
     </menu>

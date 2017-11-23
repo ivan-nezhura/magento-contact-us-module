@@ -5,10 +5,10 @@ use Magento\Framework\Model\AbstractModel;
 use Magento\Framework\DataObject\IdentityInterface;
 
 /**
- * Class ContactUs
+ * Class Message
  * @package Nezhura\ContactUs\Model
  */
-class ContactUs extends AbstractModel implements IdentityInterface
+class Message extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'nezhura_contact_us_form_data';
     const STATUS_NEW = 1;
@@ -19,7 +19,7 @@ class ContactUs extends AbstractModel implements IdentityInterface
      */
     protected function _construct()
     {
-        $this->_init('Nezhura\ContactUs\Model\ResourceModel\ContactUs');
+        $this->_init('Nezhura\ContactUs\Model\ResourceModel\Message');
     }
 
     /**
