@@ -1,0 +1,41 @@
+<?xml version="1.0"?>
+
+<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xsi:noNamespaceSchemaLocation="../../../../../lib/internal/Magento/Framework/ObjectManager/etc/config.xsd">
+
+    <virtualType name="NezhuraContactUsGirdFilterPool" type="Magento\Framework\View\Element\UiComponent\DataProvider\FilterPool">
+        <arguments>
+            <argument name="appliers" xsi:type="array">
+                <item name="regular" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\RegularFilter</item>
+                <item name="fulltext" xsi:type="object">Magento\Framework\View\Element\UiComponent\DataProvider\FulltextFilter</item>
+            </argument>
+        </arguments>
+    </virtualType>
+
+    <virtualType name="NezhuraContactUsMessageGridDataProvider" type="Magento\Framework\View\Element\UiComponent\DataProvider\DataProvider">
+        <arguments>
+            <argument name="collection" xsi:type="object" shared="false">Nezhura\ContactUs\Model\ResourceModel\Message\Collection</argument>
+            <argument name="filterPool" xsi:type="object" shared="false">NezhuraContactUsGirdFilterPool</argument>
+        </arguments>
+    </virtualType>
+
+    <type name="Nezhura\ContactUs\Model\ResourceModel\Message\Grid\Collection">
+        <arguments>
+            <argument name="mainTable" xsi:type="string">contact_us</argument>
+            <argument name="eventPrefix" xsi:type="string">contact_us_message_grid_collection</argument>
+            <argument name="eventObject" xsi:type="string">message_grid_collection</argument>
+            <argument name="resourceModel" xsi:type="string">Nezhura\ContactUs\Model\ResourceModel\Message</argument>
+        </arguments>
+    </type>
+
+    <type name="Magento\Framework\View\Element\UiComponent\DataProvider\CollectionFactory">
+        <arguments>
+            <argument name="collections" xsi:type="array">
+                <item name="nezhura_contact_us_message_listing_data_source" xsi:type="string">
+                    Nezhura\ContactUs\Model\ResourceModel\Message\Grid\Collection
+                </item>
+            </argument>
+        </arguments>
+    </type>
+
+</config>
