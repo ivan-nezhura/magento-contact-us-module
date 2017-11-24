@@ -11,7 +11,9 @@ use Magento\Framework\DataObject\IdentityInterface;
 class Message extends AbstractModel implements IdentityInterface
 {
     const CACHE_TAG = 'nezhura_contact_us_form_data';
+
     const STATUS_NEW = 1;
+    const STATUS_PROCESSED = 2;
 
 
     /**
