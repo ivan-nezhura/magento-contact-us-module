@@ -22,4 +22,12 @@ class Status implements ArrayInterface
 
         return $options;
     }
+
+    /**
+     * @return array valid statuses
+     */
+    public function getValidStatuses()
+    {
+        return array_keys($this->toOptionArray());
+    }
 }

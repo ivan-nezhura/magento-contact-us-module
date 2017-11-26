@@ -1,31 +1,33 @@
 <?php
 namespace Nezhura\ContactUs\Controller\Adminhtml\Message;
 
+use Nezhura\ContactUs\Controller\Adminhtml\Message as BaseAction;
+
 /**
  * Class Edit
  * @package Nezhura\ContactUs\Controller\Adminhtml\Post
  */
-class Reply extends \Magento\Backend\App\Action
+class Reply extends BaseAction
 {
     /**
-     * @var bool|\Magento\Framework\View\Result\PageFactory
-     */
-    protected $_resultPageFactory = false;
-
-    public function __construct(
-        \Magento\Backend\App\Action\Context $context,
-        \Magento\Framework\View\Result\PageFactory $resultPageFactory
-    ) {
-        parent::__construct($context);
-        $this->_resultPageFactory = $resultPageFactory;
-    }
-
-    /**
-     * @return \Magento\Framework\View\Result\Page
+     * handles VIEW action
+     *
+     * @inheritdoc
      */
     public function execute()
     {
-//        dump($this->getRequest()->getParam('id'));
+        $message = $this->_getMessage();
+
+        // only existing records
+        if (!$message->getId()) {
+            $this->messageManager->addErrorMessage(__('Message was not found.'));
+
+            return $this->_redirectToIndex();
+        }
+
+        $this->_coreRegistry->register('nezhura_contact_us_message', $message);
+
+        /* @var $resultPage \Magento\Backend\Model\View\Result\Page */
         $resultPage = $this->_resultPageFactory->create();
         $resultPage->setActiveMenu('Nezhura_ContactUs::contact_us_form_data');
         $resultPage->getConfig()->getTitle()->prepend(__('\'Contact us\' messages'));

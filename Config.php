@@ -16,5 +16,4 @@ class Config
      * @var string
      */
     const ID_FIELD_NAME = 'contact_us_id';
-
 }

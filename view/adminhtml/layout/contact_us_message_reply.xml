@@ -1,10 +1,16 @@
 <?xml version="1.0"?>
 
 <page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-      xsi:noNamespaceSchemaLocation="../../../../../../../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
+      layout="admin-2columns-left" xsi:noNamespaceSchemaLocation="../../../../../../
+../lib/internal/Magento/Framework/View/Layout/etc/page_configuration.xsd">
     <body>
+        <referenceContainer name="left">
+            <block class="Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Tabs"
+                   name="nezhura_contact_us_message.reply.tabs"/>
+        </referenceContainer>
         <referenceContainer name="content">
-            <block class="Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Form"/>
+            <block class="Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Edit"
+                   name="nezhura_contact_us_message.reply"/>
         </referenceContainer>
     </body>
 </page>

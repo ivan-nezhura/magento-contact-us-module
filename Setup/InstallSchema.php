@@ -44,7 +44,7 @@ class InstallSchema implements InstallSchemaInterface
                 'Phone number'
             )
             ->addColumn(
-                'message',
+                'comment',
                 Table::TYPE_TEXT,
                 Table::DEFAULT_TEXT_SIZE,
                 ['nullable' => false],

@@ -59,6 +59,13 @@
                                 <argument name="type" xsi:type="string">date</argument>
                             </arguments>
                         </block>
+                        <block class="Magento\Backend\Block\Widget\Grid\Column" as="modified">
+                            <arguments>
+                                <argument name="header" xsi:type="string" translate="true">Modified</argument>
+                                <argument name="index" xsi:type="string">modified</argument>
+                                <argument name="type" xsi:type="string">date</argument>
+                            </arguments>
+                        </block>
 
                     </block>
                 </block>
