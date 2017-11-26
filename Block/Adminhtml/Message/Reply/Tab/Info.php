@@ -48,25 +48,23 @@ class Info extends Generic implements TabInterface
         /* @var $model \Nezhura\ContactUs\Model\Message */
         $model = $this->_coreRegistry->registry('nezhura_contact_us_message');
 
-        /** @var \Magento\Framework\Data\Form $form */
+        /* @var $form \Magento\Framework\Data\Form  */
         $form = $this->_formFactory->create();
         $form->setHtmlIdPrefix('message_');
         $form->setFieldNameSuffix('message');
 
-        $fieldset = $form->addFieldset(
+        $fieldSet = $form->addFieldset(
             'base_fieldset',
             ['legend' => __('Message info')]
         );
 
-        if ($model->getId()) {
-            $fieldset->addField(
-                'contact_us_id',
-                'hidden',
-                ['name' => 'contact_us_id']
-            );
-        }
+        $fieldSet->addField(
+            'contact_us_id',
+            'hidden',
+            ['name' => 'contact_us_id']
+        );
 
-        $fieldset->addField(
+        $fieldSet->addField(
             'name',
             'text',
             [
@@ -76,7 +74,7 @@ class Info extends Generic implements TabInterface
             ]
         );
 
-        $fieldset->addField(
+        $fieldSet->addField(
             'email',
             'text',
             [
@@ -86,7 +84,7 @@ class Info extends Generic implements TabInterface
             ]
         );
 
-        $fieldset->addField(
+        $fieldSet->addField(
             'telephone',
             'text',
             [
@@ -96,7 +94,7 @@ class Info extends Generic implements TabInterface
             ]
         );
 
-        $fieldset->addField(
+        $fieldSet->addField(
             'comment',
             'textarea',
             [
@@ -106,7 +104,7 @@ class Info extends Generic implements TabInterface
             ]
         );
 
-        $fieldset->addField(
+        $fieldSet->addField(
             'status',
             'select',
             [
@@ -116,8 +114,7 @@ class Info extends Generic implements TabInterface
             ]
         );
 
-        $data = $model->getData();
-        $form->setValues($data);
+        $form->setValues($model->getData());
 
         $this->setForm($form);
 
