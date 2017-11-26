@@ -37,7 +37,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
             ]
         );
 
-        /*$this->addTab(
+        $this->addTab(
             'message_reply',
             [
                 'label' => __('Reply'),
@@ -46,7 +46,7 @@ class Tabs extends \Magento\Backend\Block\Widget\Tabs
                     'Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Tab\Reply'
                 )->toHtml(),
             ]
-        );*/
+        );
 
         return parent::_beforeToHtml();
     }

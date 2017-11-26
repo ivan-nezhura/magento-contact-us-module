@@ -1,67 +1,22 @@
 <?php
 namespace Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Tab;
 
-use Magento\Backend\Block\Widget\Form\Generic;
 use Magento\Backend\Block\Widget\Tab\TabInterface;
-use Magento\Backend\Block\Template\Context;
-use Magento\Framework\Registry;
-use Magento\Framework\Data\FormFactory;
-use Magento\Cms\Model\Wysiwyg\Config;
-use Nezhura\ContactUs\Model\System\Config\Status;
+use Magento\Ui\Component\Form\Element\Textarea;
 
 /**
  * Class Reply
  * @package Nezhura\ContactUs\Block\Adminhtml\Message\Reply\Tab
  */
-class Reply extends Generic implements TabInterface
+class Reply extends \Magento\Framework\View\Element\AbstractBlock
+    implements TabInterface
 {
     /**
-     * @return \Magento\Backend\Block\Widget\Form
+     * @return string reply customer textarea block
      */
-    protected function _prepareForm()
+    protected function _toHtml()
     {
-        /* @var $model \Nezhura\ContactUs\Model\Message */
-        $model = $this->_coreRegistry->registry('nezhura_contact_us_message');
-
-        /* @var \Magento\Framework\Data\Form $form */
-        $form = $this->_formFactory->create();
-
-
-        $fieldset = $form->addFieldset('contact_us_reply_form_fieldset', []);
-
-        $fieldset->addField(
-            'reply_message',
-            \Magento\Framework\Data\Form\Element\Textarea::class,
-            [
-                'name' => 'reply_message',
-                'title' => __('Response'),
-                'label' => __('Response'),
-                'required' => true,
-            ]
-        );
-
-        $form->addField(
-            'submit',
-            \Magento\Framework\Data\Form\Element\Submit::class,
-            [
-                'name' => 'reply',
-                'value' => __('Reply'),
-                'title' => __('Reply to customer'),
-                'label' => __('Reply to customer'),
-                'class' => 'action-default'
-            ]
-        );
-
-        $form->setMethod('post');
-        $form->setId('contact_us_reply_form');
-        $form->setUseContainer(true);
-        $form->setAction($this->getUrl('contact_us/message/response'));
-
-//        $this->
-
-        $this->setForm($form);
-
-        return parent::_prepareForm();
+        return '<textarea name="response_message"></textarea><button name="response">send response</button>';
     }
 
     /**
