@@ -12,11 +12,67 @@ class Reply extends \Magento\Framework\View\Element\AbstractBlock
     implements TabInterface
 {
     /**
-     * @return string reply customer textarea block
+     * @var \Magento\Framework\Registry
+     */
+    protected $_coreRegistry;
+
+    /**
+     * @var \Magento\Framework\Data\Form\Element\Fieldset
+     */
+    protected $_fieldset;
+
+    /**
+     * Reply constructor.
+     * @param \Magento\Framework\View\Element\Context $context
+     * @param \Magento\Framework\Registry $coreRegistry
+     * @param array $data
+     */
+    public function __construct(
+        \Magento\Framework\View\Element\Context $context,
+        \Magento\Framework\Registry $coreRegistry,
+        \Magento\Framework\Data\Form\Element\Fieldset $fieldset,
+        array $data = []
+    ) {
+        $this->_coreRegistry = $coreRegistry;
+        $this->_fieldset = $fieldset;
+
+        parent::__construct($context, $data);
+    }
+
+    /**
+     * @return string reply customer block
      */
     protected function _toHtml()
     {
-        return '<textarea name="response_message"></textarea><button name="response">send response</button>';
+        $editForm = $this->_coreRegistry->registry('nezhura_contact_us_edit_form');
+
+        if ($editForm === null) {
+            return '';
+        }
+
+        $this->_fieldset->setForm($editForm);
+
+        $this->_fieldset->setLegend(__('Reply customer'));
+
+        $this->_fieldset->addField(
+            'comment',
+            'textarea',
+            [
+                'name' => 'response_message',
+                'label' => __('Response text'),
+            ]
+        );
+
+        $this->_fieldset->addField(
+            'response',
+            'submit',
+            [
+                'name' => 'response',
+                'value' => __('Reply'),
+            ]
+        );
+
+        return $this->_fieldset->getHtml();
     }
 
     /**

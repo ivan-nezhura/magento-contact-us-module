@@ -26,6 +26,8 @@ class Form extends \Magento\Backend\Block\Widget\Form\Generic
         $form->setUseContainer(true);
         $this->setForm($form);
 
+        $this->_coreRegistry->register('nezhura_contact_us_edit_form', $form);
+
         return parent::_prepareForm();
     }
 }

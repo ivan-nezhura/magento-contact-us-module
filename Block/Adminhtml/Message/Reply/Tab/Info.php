@@ -7,7 +7,6 @@ use Magento\Backend\Block\Widget\Tab\TabInterface;
 use Magento\Backend\Block\Template\Context;
 use Magento\Framework\Registry;
 use Magento\Framework\Data\FormFactory;
-use Magento\Cms\Model\Wysiwyg\Config;
 use Nezhura\ContactUs\Model\System\Config\Status;
 
 /**

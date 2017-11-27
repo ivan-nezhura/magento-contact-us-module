@@ -107,7 +107,7 @@ class Save extends BaseAction
                     );
                 } catch (\Exception $exception) {
                     $this->messageManager->addSuccessMessage(
-                        __('Error occurred: %s.', $exception->getMessage())
+                        __('Error occurred: %1.', $exception->getMessage())
                     );
                 }
             }
@@ -119,9 +119,15 @@ class Save extends BaseAction
     /**
      * @param $customerEmail string
      * @param $message string
+     *
+     * @throws \Exception if $message is blank
      */
     protected function _sendResponse($customerEmail, $message)
     {
+        if (!\Zend_Validate::is(trim($message), 'NotEmpty')) {
+            throw new \Exception(__('Response can not be blank'));
+        }
+
         $transport = $this->_transportBuilder
             ->setTemplateIdentifier('nezhura_contact_us_response')
             ->setTemplateOptions(

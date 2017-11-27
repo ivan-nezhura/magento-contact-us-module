@@ -27,7 +27,7 @@ class Delete extends BaseAction
             $this->messageManager
                 ->addErrorMessage(
                     __(
-                        'Error was occurred: %s. Message is not deleted.',
+                        'Error was occurred: %1. Message is not deleted.',
                         $e->getMessage()
                     )
                 );
