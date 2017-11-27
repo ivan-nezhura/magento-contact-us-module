@@ -1,7 +1,8 @@
 Contact Us Module - for Magento 2
 ===============================
 
-##Installation
+Installation
+-----------
 - Copy following data to relevant sections of your composer.json
     ```
     {
@@ -20,8 +21,8 @@ Contact Us Module - for Magento 2
     ```
     composer update
     ```
-    OR
-    ----
+    **OR**
+    
     copy source code into your project
 - Run
     ```
