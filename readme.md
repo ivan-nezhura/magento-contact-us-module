@@ -1,5 +1,7 @@
 Contact Us Module - for Magento 2
 ===============================
+Saves submitted native 'Contact Us' form to DB.
+Allows to make response from admin part.
 
 Installation
 -----------
